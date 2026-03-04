@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SmartBook Finder</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+
+<!-- HERO SECTION -->
+
+<section class="hero">
+
+<h1>📚 SmartBook Finder</h1>
+
+<p class="tagline">Search millions of books instantly</p>
+
+<div class="search-box">
+
+<input type="text" id="searchInput" placeholder="Search books by title or author">
+
+<button onclick="searchBooks()">Search</button>
+
+</div>
+
+</section>
+
+
+<!-- RESULTS -->
+
+<div id="loader" style="display:none">
+<div class="spinner"></div>
+</div>
+
+<div id="results"></div>
+
+
+<!-- ABOUT SECTION -->
+
+<section class="about">
+
+<h2>Why Use SmartBook Finder?</h2>
+
+<p>
+
+SmartBook Finder allows users to quickly search for books using the Google Books API.
+It displays book titles, authors, publication dates, and cover images in a clean interface.
+Users can explore books and access more information through external links.
+
+</p>
+
+</section>
+<!-- FEATURES SECTION -->
+
+<section class="features">
+
+<h2>Key Features</h2>
+
+<div class="feature-container">
+
+<div class="feature">
+<h3>⚡ Fast Search</h3>
+<p>Instantly search millions of books using the Google Books API.</p>
+</div>
+
+<div class="feature">
+<h3>📖 Detailed Information</h3>
+<p>View book titles, authors, publication dates, and cover images.</p>
+</div>
+
+<div class="feature">
+<h3>🌐 External Links</h3>
+<p>Access additional book details directly from trusted sources.</p>
+</div>
+
+</div>
+
+</section>
+<!-- HOW IT WORKS SECTION -->
+
+<section class="how-it-works">
+
+<h2>How It Works</h2>
+
+<div class="steps">
+
+<div class="step">
+<h3>🔍 Search</h3>
+<p>Enter the title or author of the book you want to find.</p>
+</div>
+
+<div class="step">
+<h3>📚 Browse</h3>
+<p>View book details including author, publication date, and cover.</p>
+</div>
+
+<div class="step">
+<h3>🌐 Explore</h3>
+<p>Click the external link to learn more about the book.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<p>Developed by <strong>Ankit Nair</strong></p>
+
+<div class="social-links">
+
+<a href="https://github.com/ankitnair01" target="_blank">
+<i class="fab fa-github"></i>
+</a>
+
+<a href="https://linkedin.com/in/ankit-nair01" target="_blank">
+<i class="fab fa-linkedin"></i>
+</a>
+
+</div>
+
+</footer>
+
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

@@ -13,15 +13,19 @@ function searchBooks(){
         .then(data => {
 
             loader.style.display = "none";
-            document.getElementById("results").scrollIntoView({
-                 behavior: "smooth"
-            });
+
+            console.log("Books received:", data);
+
+            if(!data || data.length === 0){
+                results.innerHTML = "<p>No books found.</p>";
+                return;
+            }
 
             data.forEach(book => {
 
                 const image = book.thumbnail ? book.thumbnail : "https://via.placeholder.com/120";
 
-                const bookCard = `
+                const card = `
                     <div class="book-card">
                         <img src="${image}" width="120">
                         <h3>${book.title}</h3>
@@ -31,13 +35,20 @@ function searchBooks(){
                     </div>
                 `;
 
-                results.innerHTML += bookCard;
+                results.innerHTML += card;
 
             });
 
+            results.scrollIntoView({ behavior: "smooth" });
+
+        })
+        .catch(error => {
+            console.error("Search error:", error);
+            loader.style.display = "none";
         });
 
 }
+
 document.getElementById("searchInput")
 .addEventListener("keypress", function(event){
 

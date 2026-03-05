@@ -48,26 +48,32 @@ def home():
 @app.route('/search')
 def search():
 
-    query = request.args.get('q')
+    query = request.args.get('q', '')
+
+    if not query:
+        return jsonify([])
 
     url = f"https://www.googleapis.com/books/v1/volumes?q={query}"
 
     response = requests.get(url)
     data = response.json()
+    print(data)
 
     books = []
 
     if "items" in data:
         for item in data["items"]:
 
-            info = item["volumeInfo"]
+            info = item.get("volumeInfo", {})
+
+            image_links = info.get("imageLinks", {})
 
             books.append({
-                "title": info.get("title"),
-                "authors": ", ".join(info.get("authors", [])),
-                "publishedDate": info.get("publishedDate"),
-                "thumbnail": info.get("imageLinks", {}).get("thumbnail"),
-                "previewLink": info.get("previewLink")
+                "title": info.get("title", "No Title"),
+                "authors": ", ".join(info.get("authors", ["Unknown Author"])),
+                "publishedDate": info.get("publishedDate", "N/A"),
+                "thumbnail": image_links.get("thumbnail"),
+                "previewLink": info.get("previewLink", "#")
             })
 
     return jsonify(books)
